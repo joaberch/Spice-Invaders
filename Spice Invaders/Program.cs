@@ -1,2 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Spice_Invaders;
+
+Vaisseau joueur = new Vaisseau();
+
+while(true)
+{
+
+}
