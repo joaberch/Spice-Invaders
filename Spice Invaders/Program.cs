@@ -1,16 +1,26 @@
 ﻿using Spice_Invaders;
 
-Vaisseau joueur = new Vaisseau(10);
+Vaisseau joueur = new Vaisseau(3);
+alien alien = new alien();
 
 //Assignation des variables (TODO : rename all comments in english)
-Console.CursorVisible = false;
-ConsoleKeyInfo keyPressed;      //Préparer la variable pour récupérer la saisie
-//TODO : collection ennemi mort
-List<Ammunition> shooted = new List<Ammunition>(); 
+
+Console.CursorVisible = false;  //Unshowing the cursor
+ConsoleKeyInfo keyPressed;      //Will get the user input
+const int NBRENEMY = 10;
+alien.creatingenemy(NBRENEMY);
+
+List<Ammunition> shooted = new List<Ammunition>(); //Collection of bullet shoot
+List<alien> enemyalive = new List<alien>();
 
 
 
 //Menu
+
+for(int i=0; i <= NBRENEMY; ++i)
+{
+
+}
 
 while (true)     //game engine
 {
@@ -22,6 +32,8 @@ while (true)     //game engine
         ammo.show();
         ammo.move();
     }
+    //foreach()
+    
 
     if (Console.KeyAvailable)                               // L'utilisateur a pressé une touche
     {
@@ -48,5 +60,5 @@ while (true)     //game engine
         }
     }
 
-    Thread.Sleep(50);       //15 is equivalent to 60fps (TODO: check that)
+    Thread.Sleep(25);       //15 is equivalent to 60fps (TODO: check that)
 }
