@@ -48,5 +48,5 @@ while (true)     //game engine
         }
     }
 
-    Thread.Sleep(50);       //equivalent to 60fps (TODO: check)
+    Thread.Sleep(50);       //15 is equivalent to 60fps (TODO: check that)
 }

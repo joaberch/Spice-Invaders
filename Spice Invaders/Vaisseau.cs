@@ -18,7 +18,7 @@ namespace Spice_Invaders
             @" /(__)\",
             @"(__)(__)",
      };
-        public Vaisseau(int vieVaisseau)                    //Constructeur 1 (ennemi faible)
+        public Vaisseau(int vieVaisseau)                    //Constructeur 1
         {
 
         }
