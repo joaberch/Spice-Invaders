@@ -31,7 +31,10 @@ namespace Spice_Invaders
 
         public void move()
         {
-            ++compteur;
+            if (yammo - compteur >= 1) //Si le missile atteint la fin de l'écran il n'est plus calculé
+            {
+                ++compteur;
+            }
         }
 
     }
