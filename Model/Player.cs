@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Display;
 
-namespace Spice_Invaders
+namespace Model
 {
-    internal class Vaisseau
+    internal class Player
     {
+        Playground playground = new Playground();
         public int x = 0;
-        public int y = Console.WindowHeight-HAUTEURVAISSEAU;
+        public int y = Console.WindowHeight - HAUTEURVAISSEAU;
         const int HAUTEURVAISSEAU = 4;
-        public string[] PlayerSprite =
-{
-            @"   __",
-            @"  /__\",
-            @" /(__)\",
-            @"(__)(__)",
-     };
-        public Vaisseau(int vieVaisseau)                    //Constructeur 1
+
+        public Player(int vieVaisseau)                    //Constructeur 1
         {
 
         }
@@ -27,14 +23,14 @@ namespace Spice_Invaders
         {
             for (int i = 0; i < HAUTEURVAISSEAU; ++i)
             {
-                Console.SetCursorPosition(x, Console.WindowHeight-HAUTEURVAISSEAU+i);   //Sélectionne le bas de l'écran + 1
-                Console.WriteLine(PlayerSprite[i]);
+                Console.SetCursorPosition(x, Console.WindowHeight - HAUTEURVAISSEAU + i);   //Sélectionne le bas de l'écran + 1
+                playground.DisplayShip(x, y);
             }
         }
 
         public void MovingLeft()
         {
-            if(x <= 1)
+            if (x <= 1)
             {
 
             }
@@ -46,7 +42,7 @@ namespace Spice_Invaders
 
         public void MovingRight()
         {
-            if (x >= Console.WindowWidth-4-PlayerSprite.Length)
+            if (x >= Console.WindowWidth - 4 - playground.PlayerSprite1.Length)
             {
 
             }
@@ -58,8 +54,7 @@ namespace Spice_Invaders
 
         public void Shoot()
         {
-            Ammunition ammo = new Ammunition(x, y);
+            Ammo ammo = new Ammo(x, y);
         }
-
     }
 }

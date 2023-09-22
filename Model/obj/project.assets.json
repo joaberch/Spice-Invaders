@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Display/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Display.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Display.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Display/1.0.0": {
+      "type": "project",
+      "path": "../Display/Display.csproj",
+      "msbuildProject": "../Display/Display.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Display >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\px59nyu\\.nuget\\packages\\": {},
@@ -37,7 +56,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Arborescence\\2eme_annee\\1er-trimestre\\POO\\Projet\\Version2\\Spice-Invaders\\Display\\Display.csproj": {
+              "projectPath": "D:\\Arborescence\\2eme_annee\\1er-trimestre\\POO\\Projet\\Version2\\Spice-Invaders\\Display\\Display.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
