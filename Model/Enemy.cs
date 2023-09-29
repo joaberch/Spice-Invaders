@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Model
 {
-    internal class Enemy
+    public class Enemy
     {
         List<Enemy> alive = new List<Enemy>();
         public Enemy(string shooter)  //Constructeur 1 (weak ennemy white)

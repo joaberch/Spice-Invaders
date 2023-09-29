@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Display;
-
 namespace Model
 {
-    internal class Ammo
+    
+    public class Ammo
     {
         Playground playground = new Playground();
         //Collection of bullet

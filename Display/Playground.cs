@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Display
 {
+
     public class Playground
     {
         private const string AMMOSPRITE = "|";
@@ -48,4 +48,3 @@ namespace Display
         }
     }
 }
-

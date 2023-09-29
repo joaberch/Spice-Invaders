@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Display;
-
 namespace Model
 {
-    internal class Player
+    public class Player
     {
         Playground playground = new Playground();
         public int x = 0;
