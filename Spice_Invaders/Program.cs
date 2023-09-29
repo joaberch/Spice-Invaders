@@ -51,6 +51,15 @@ class Program
                 ammo.move();
             }
 
+            //Kill ammo
+            for (int i = 0; i < shooted.Count; ++i)
+            {
+                if (shooted[i].y <= 1)
+                {
+                    shooted.Remove(shooted[i]);
+                }
+            }
+
             //Display and move alien
             foreach (Enemy alien in enemyalive)
             {

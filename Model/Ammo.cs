@@ -23,19 +23,13 @@ namespace Model
 
         public void show()
         {
-            if (y - 1 >= 1) //Si le missile atteint la fin de l'écran il n'est plus affiché
-            {
-                y -= 1;
-                playground.DisplayAmmunition(x, y);
-            }
+            y -= 1;
+            playground.DisplayAmmunition(x, y);
         }
 
         public void move()
         {
-            if (y - compteur >= 1) //Si le missile atteint la fin de l'écran il n'est plus calculé
-            {
-                ++compteur;
-            }
+            ++compteur;
         }
     }
 }
