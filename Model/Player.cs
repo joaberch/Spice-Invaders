@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Display;
+
 namespace Model
 {
     public class Player
@@ -20,11 +21,7 @@ namespace Model
 
         public void show()                                  //Afficher le vaisseau du joueur
         {
-            for (int i = 0; i < HAUTEURVAISSEAU; ++i)
-            {
-                Console.SetCursorPosition(x, Console.WindowHeight - HAUTEURVAISSEAU + i);   //Sélectionne le bas de l'écran + 1
-                playground.DisplayShip(x, y);
-            }
+            playground.DisplayShip(x, y);
         }
 
         public void MovingLeft()

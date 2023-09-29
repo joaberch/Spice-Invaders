@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Display;
 namespace Model
 {
-    
+
     public class Ammo
     {
         Playground playground = new Playground();
@@ -23,9 +23,9 @@ namespace Model
 
         public void show()
         {
-            if (y - compteur >= 1) //Si le missile atteint la fin de l'écran il n'est plus affiché
+            if (y - 1 >= 1) //Si le missile atteint la fin de l'écran il n'est plus affiché
             {
-                Console.SetCursorPosition(x + 4, y - compteur);
+                y -= 1;
                 playground.DisplayAmmunition(x, y);
             }
         }
