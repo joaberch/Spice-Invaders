@@ -23,8 +23,7 @@ class Program
         List<Ammo> shooted = new List<Ammo>(); //Collection of bullet shoot
         List<Enemy> enemyalive = new List<Enemy>();
 
-        //Menu
-
+        //Instanciating enemy
         for (int i = 0; i <= NBRENEMY; ++i)
         {
             enemyalive.Add(new Enemy(i*4, 1));
@@ -35,6 +34,15 @@ class Program
         {
             Console.Clear();    //Clear Screen
             joueur.show();      //Display Player
+
+            //if all enemy are dead we create more enemy
+            if(enemyalive.Count <= 0)
+            {
+                for(int i = 0; i<25;++i)
+                {
+                    enemyalive.Add(new Enemy(i*4, 1));
+                }
+            }
 
             //Display and move ammo
             foreach (Ammo ammo in shooted)
