@@ -8,7 +8,7 @@ class Program
         Config config = new Config();
         config.configurateScreen();
         Player joueur = new Player(3);
-        Enemy mechant = new Enemy(0);
+        Enemy mechant = new Enemy(0, 0);
 
         //Assignation des variables (TODO : rename all comments in english)
 
@@ -27,19 +27,23 @@ class Program
 
         for (int i = 0; i <= NBRENEMY; ++i)
         {
-            enemyalive.Add(new Enemy(i*4));
+            enemyalive.Add(new Enemy(i*4, 1));
         }
 
-        while (true)     //game engine
+        //Game engine
+        while (true)
         {
-            Console.Clear();    //Nettoyer l'écran
-            joueur.show();      //Afficher le joueur
+            Console.Clear();    //Clear Screen
+            joueur.show();      //Display Player
 
+            //Display and move ammo
             foreach (Ammo ammo in shooted)
             {
                 ammo.show();
                 ammo.move();
             }
+
+            //Display and move alien
             foreach (Enemy alien in enemyalive)
             {
                 alien.show();
@@ -49,7 +53,30 @@ class Program
                 }
             }
 
-            if (Console.KeyAvailable)                               // L'utilisateur a pressé une touche
+            //Kill dead enemy
+            for(int i = 0; i<enemyalive.Count;++i)
+            {
+                if (enemyalive[i]._lifePoint <= 0)
+                {
+                    enemyalive.Remove(enemyalive[i]);
+                }
+            }
+            
+            //check if an ammo is touching an enemy
+            foreach (Ammo ammo in shooted)
+            {
+                foreach(Enemy alien in enemyalive)
+                {
+                    if((alien._y == ammo.y || alien._y-1==ammo.y||alien._y+1 == ammo.y) && (alien._x-2 == ammo.x || alien._x-3 == ammo.x || alien._x-4==ammo.x))
+                    {
+                        alien.takeDamage();
+                        
+                    }
+                }
+            }
+
+            //if the player has pressed a button
+            if (Console.KeyAvailable)                               //L'utilisateur a pressé une touche
             {
 
                 keyPressed = Console.ReadKey(false);

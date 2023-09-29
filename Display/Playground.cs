@@ -33,7 +33,7 @@ namespace Display
         {
             for(int i=0;i<3;++i)
             {
-                Console.SetCursorPosition(x, y+i);
+                 Console.SetCursorPosition(x, y+i);
                 Console.Write(ennemySprite1[i]);
             }
         }
