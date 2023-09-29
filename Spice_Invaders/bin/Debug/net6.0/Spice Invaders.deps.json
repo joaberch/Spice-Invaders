@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Spice Invaders/1.0.0": {
         "dependencies": {
+          "Display": "1.0.0",
           "Model": "1.0.0"
         },
         "runtime": {

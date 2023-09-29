@@ -41,6 +41,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Display >= 1.0.0",
       "Model >= 1.0.0"
     ]
   },
@@ -75,6 +76,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "D:\\Arborescence\\2eme_annee\\1er-trimestre\\POO\\Projet\\Version2\\Spice-Invaders\\Display\\Display.csproj": {
+              "projectPath": "D:\\Arborescence\\2eme_annee\\1er-trimestre\\POO\\Projet\\Version2\\Spice-Invaders\\Display\\Display.csproj"
+            },
             "D:\\Arborescence\\2eme_annee\\1er-trimestre\\POO\\Projet\\Version2\\Spice-Invaders\\Model\\Model.csproj": {
               "projectPath": "D:\\Arborescence\\2eme_annee\\1er-trimestre\\POO\\Projet\\Version2\\Spice-Invaders\\Model\\Model.csproj"
             }
