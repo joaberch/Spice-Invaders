@@ -73,7 +73,7 @@ class Program
                 {
                     for(int i = 0; i<enemyalive.Count();++i)
                     {
-                        enemyalive[i].moveDown();
+                        enemyalive[i].moveDown();   //TODO : problème icescrum (Making all the enemy go down : time spent : 65)
                     }
                 }
             }
