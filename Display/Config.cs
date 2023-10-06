@@ -8,6 +8,7 @@
         public void configurateScreen()
         {
             Console.SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+            Console.SetBufferSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         }
     }
 }

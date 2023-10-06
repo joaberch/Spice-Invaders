@@ -11,10 +11,10 @@ namespace Model
     {
         Playground playground = new Playground();
         //Collection of bullet
-        public List<Ammo> ammoshooted = new List<Ammo>();
+        //public List<Ammo> ammoshooted = new List<Ammo>();
         public int x;
         public int y;
-        public int compteur = 0;
+        //public int compteur = 0;
         public Ammo(int x, int y)    //Constructeur
         {
             this.x = x;
@@ -23,13 +23,13 @@ namespace Model
 
         public void show()
         {
-            y -= 1;
+            y--;
             playground.DisplayAmmunition(x, y);
         }
 
         public void move()
         {
-            ++compteur;
+            //++compteur;
         }
     }
 }

@@ -5,6 +5,7 @@ class Program
 {
     static void Main()
     {
+
         Config config = new Config();
         config.configurateScreen();
         Player joueur = new Player(3);
@@ -26,7 +27,7 @@ class Program
         //Instanciating enemy
         for (int i = 0; i <= NBRENEMY; ++i)
         {
-            enemyalive.Add(new Enemy(i*4, 1));
+            enemyalive.Add(new Enemy(i * 4, 1));
         }
 
         //Game engine
@@ -36,11 +37,11 @@ class Program
             joueur.show();      //Display Player
 
             //if all enemy are dead we create more enemy
-            if(enemyalive.Count <= 0)
+            if (enemyalive.Count <= 0)
             {
-                for(int i = 0; i<25;++i)
+                for (int i = 0; i < 25; ++i)
                 {
-                    enemyalive.Add(new Enemy(i*4, 1));
+                    enemyalive.Add(new Enemy(i * 4, 1));
                 }
             }
 
@@ -64,30 +65,30 @@ class Program
             foreach (Enemy alien in enemyalive)
             {
                 alien.show();
-                if(nbrframe % 1 == 0)
+                if (nbrframe % 3 == 0)
                 {
                     alien.move();
                 }
             }
 
             //Kill dead enemy
-            for(int i = 0; i<enemyalive.Count;++i)
+            for (int i = 0; i < enemyalive.Count; ++i)
             {
                 if (enemyalive[i]._lifePoint <= 0)
                 {
                     enemyalive.Remove(enemyalive[i]);
                 }
             }
-            
+
             //check if an ammo is touching an enemy
             foreach (Ammo ammo in shooted)
             {
-                foreach(Enemy alien in enemyalive)
+                foreach (Enemy alien in enemyalive)
                 {
-                    if((alien._y == ammo.y || alien._y-1==ammo.y||alien._y+1 == ammo.y) && (alien._x-2 == ammo.x || alien._x-3 == ammo.x || alien._x-4==ammo.x))
+                    if ((alien._y == ammo.y || alien._y - 1 == ammo.y || alien._y + 1 == ammo.y) && (alien._x - 2 == ammo.x || alien._x - 3 == ammo.x || alien._x - 4 == ammo.x))
                     {
                         alien.takeDamage();
-                        
+                        shooted.Remove(ammo);
                     }
                 }
             }
@@ -99,7 +100,7 @@ class Program
                 keyPressed = Console.ReadKey(false);
                 switch (keyPressed.Key)
                 {
-                    case ConsoleKey.LeftArrow:                       //Si l'utilisateur a appuyé sur flèche de gauche
+                    case ConsoleKey.LeftArrow:                      //Si l'utilisateur a appuyé sur flèche de gauche
                         joueur.MovingLeft();
                         break;
 
@@ -119,7 +120,7 @@ class Program
             }
 
             ++nbrframe;
-            Thread.Sleep(25);       //15 is equivalent to 60fps (TODO: check that)
+            Thread.Sleep(10);       //15 is equivalent to 60fps (TODO: check that)
         }
     }
 }

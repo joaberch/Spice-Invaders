@@ -14,7 +14,7 @@ namespace Model
         public int y = Console.WindowHeight - HAUTEURVAISSEAU;
         const int HAUTEURVAISSEAU = 4;
 
-        public Player(int vieVaisseau)                    //Constructeur 1
+        public Player(int vieVaisseau)                    //Constructor 1
         {
 
         }
