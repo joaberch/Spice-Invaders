@@ -26,11 +26,7 @@ namespace Model
 
         public void MovingLeft()
         {
-            if (x <= 1)
-            {
-
-            }
-            else
+            if (x >= 1)
             {
                 --x;
             }
@@ -38,11 +34,7 @@ namespace Model
 
         public void MovingRight()
         {
-            if (x >= Console.WindowWidth - 4 - playground.PlayerSprite1.Length)
-            {
-
-            }
-            else
+            if (x <= Console.WindowWidth - 4 - playground.PlayerSprite1.Length)
             {
                 ++x;
             }

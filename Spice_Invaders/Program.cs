@@ -39,7 +39,7 @@ class Program
             //if all enemy are dead we create more enemy
             if (enemyalive.Count <= 0)
             {
-                for (int i = 0; i < 25; ++i)
+                for (int i = 1; i < 10; ++i)
                 {
                     enemyalive.Add(new Enemy(i * 4, 1));
                 }
@@ -65,9 +65,16 @@ class Program
             foreach (Enemy alien in enemyalive)
             {
                 alien.show();
-                if (nbrframe % 3 == 0)
+                if (nbrframe % 1 == 0)
                 {
                     alien.move();
+                }
+                if (alien._x >= Console.WindowWidth - 5 || alien._x <= 0)
+                {
+                    for(int i = 0; i<enemyalive.Count();++i)
+                    {
+                        enemyalive[i].moveDown();
+                    }
                 }
             }
 
@@ -88,7 +95,7 @@ class Program
                     if ((alien._y == ammo.y || alien._y - 1 == ammo.y || alien._y + 1 == ammo.y) && (alien._x - 2 == ammo.x || alien._x - 3 == ammo.x || alien._x - 4 == ammo.x))
                     {
                         alien.takeDamage();
-                        shooted.Remove(ammo);
+                        //shooted.Remove(ammo);
                     }
                 }
             }

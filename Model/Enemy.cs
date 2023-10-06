@@ -19,10 +19,10 @@ namespace Model
         public Enemy(int x, int lifePoint)  //Constructor 1 (weak enemy, white)
         {
             _x = x;
-            _y = 0;
+            _y = 3;
             _lifePoint = lifePoint;
         }
-        
+
         public void creatingenemy(int p)
         {
             for (int i = 0; i <= p; ++i)
@@ -33,44 +33,38 @@ namespace Model
 
         public void show()
         {
-            if (this._lifePoint > 0)
-            {
-                if (this._y < 3) { this._y = 3; }
-                playground.DisplayEnemy1(_x, _y);
-            }
+            playground.DisplayEnemy1(_x, _y);
         }
         public void move()
         {
-            if (this._lifePoint > 0)
+
+            if (IsGoingToTheRight)
             {
-                if (IsGoingToTheRight)
-                {
-                    this._x++;
-                }
-                else
-                {
-                    this._x--;
-                }
+                _x++;
+            }
+            else
+            {
+                _x--;
+            }
 
-                if (this._x >= Console.WindowWidth - 5)
-                {
-                    IsGoingToTheRight = false;
-                    _y += 3;
-                }
-
-                if (this._x <= 0)
-                {
-                    _y += 3;
-                    IsGoingToTheRight = true;
-                    
-                }
+        }
+        public void moveDown()
+        {
+            this._y += 1; //Do it twice so go down twice
+            if(IsGoingToTheRight)
+            {
+                IsGoingToTheRight=false;
+            }
+            else
+            {
+                IsGoingToTheRight = true;
             }
         }
         public void takeDamage()
         {
             this._lifePoint--;
 
-            if(this._lifePoint <= 0)
+            if (this._lifePoint <= 0)
             {
 
             }
