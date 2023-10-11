@@ -9,21 +9,31 @@ namespace Model
 {
     public class Player
     {
-        Playground playground = new Playground();
-        public int x = 0;
-        public int y = Console.WindowHeight - HAUTEURVAISSEAU;
-        const int HAUTEURVAISSEAU = 4;
+        Playground playground = new Playground();               //Instantiating the playground so that i can display the player
+        public int x = 0;                                       //Variable taking the x position of the ship
+        public int y = Config.WINDOW_HEIGHT - HAUTEURVAISSEAU;  //Variable taking the y position of the ship
+        const int HAUTEURVAISSEAU = 4;                          //constant taking the height of the sprite of the ship
 
-        public Player(int vieVaisseau)                    //Constructor 1
+        /// <summary>
+        /// Constructor of the ship
+        /// </summary>
+        /// <param name="vieVaisseau"></param>
+        public Player(int vieVaisseau)
         {
 
         }
 
-        public void show()                                  //Afficher le vaisseau du joueur
+        /// <summary>
+        /// Displaying the ship of the player
+        /// </summary>
+        public void show()
         {
             playground.DisplayShip(x, y);
         }
 
+        /// <summary>
+        /// Making the ship moving to the left
+        /// </summary>
         public void MovingLeft()
         {
             if (x >= 1)
@@ -32,6 +42,9 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Making the ship moving to the right
+        /// </summary>
         public void MovingRight()
         {
             if (x <= Console.WindowWidth - 4 - playground.PlayerSprite1.Length)
@@ -40,9 +53,9 @@ namespace Model
             }
         }
 
-        public void Shoot()
+        /*public void Shoot()
         {
             Ammo ammo = new Ammo(x, y);
-        }
+        }*/
     }
 }

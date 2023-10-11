@@ -5,27 +5,27 @@ class Program
 {
     static void Main()
     {
-
+        //Instantiating the object
         Config config = new Config();
         config.configurateScreen();
         Player joueur = new Player(3);
         Enemy mechant = new Enemy(0, 0);
         Score score = new Score();
 
-        //Assignation des variables (TODO : rename all comments in english and comments)
+        //assigning the variable (TODO : rename all comments in english and comments)
 
-        Console.CursorVisible = false;  //Not displaying the cursor
-        ConsoleKeyInfo keyPressed;      //Will get the user input
-        const int NBRENEMY = 10;
-        int nbrframe = 0;
+        Console.CursorVisible = false;                  //Not displaying the cursor
+        ConsoleKeyInfo keyPressed;                      //Will get the user input
+        const int NBRENEMY = 10;                        //Choosing the number of enemy per wave
+        int nbrframe = 0;                               //Calculate the number of farme
 
-        mechant.creatingenemy(NBRENEMY);
-        mechant.nbrenemy = NBRENEMY;
+        mechant.creatingenemy(NBRENEMY);                //Instantiating the number of enemy choosen
+        mechant.nbrenemy = NBRENEMY;                    //Getting the number of enemy in the enemy class
 
-        List<Ammo> shooted = new List<Ammo>(); //Collection of bullet shoot
-        List<Enemy> enemyalive = new List<Enemy>();
+        List<Ammo> shooted = new List<Ammo>();          //Collection of bullet shooted
+        List<Enemy> enemyalive = new List<Enemy>();     //Collection of enemy alive
 
-        //Instanciating enemy
+        //Instantiating enemy
         for (int i = 0; i <= NBRENEMY; ++i)
         {
             enemyalive.Add(new Enemy(i * 4, 1));
@@ -40,7 +40,7 @@ class Program
             //Displaying the score
             score.DisplayScore();
 
-            //if all enemy are dead we create more enemy
+            //If all enemy are dead we create more enemy
             if (enemyalive.Count <= 0)
             {
                 for (int i = 1; i < 10; ++i)
@@ -91,7 +91,7 @@ class Program
                 }
             }
 
-            //check if an ammo is touching an enemy
+            //Check if an ammo is touching an enemy
             foreach (Ammo ammo in shooted)
             {
                 foreach (Enemy alien in enemyalive)
@@ -114,34 +114,37 @@ class Program
                 }
             }
 
-            //Check if the player has pressed a button
-            if (Console.KeyAvailable)                               //L'utilisateur a pressé une touche
+            //Check if the player has pressed any button
+            if (Console.KeyAvailable)                               //If the user press any touch
             {
 
                 keyPressed = Console.ReadKey(false);
                 switch (keyPressed.Key)
                 {
-                    case ConsoleKey.LeftArrow:                      //Si l'utilisateur a appuyé sur la flèche de gauche
+                    case ConsoleKey.LeftArrow:                      //If the user press the left arrow key
                         joueur.MovingLeft();
                         break;
 
-                    case ConsoleKey.RightArrow:                     //Si l'utilisateur a appuyé sur la flèche de droite
+                    case ConsoleKey.RightArrow:                     //If the user press the right arrow key
                         joueur.MovingRight();
                         break;
 
-                    case ConsoleKey.Spacebar:                       //if the player is pressing the spacebar
-                        joueur.Shoot();
-                        shooted.Add(new Ammo(joueur.x, joueur.y));
+                    case ConsoleKey.Spacebar:                       //If the user press the space bar
+                        if(shooted.Count() < 5)                     //Can't shoot if there's more than 5 ammo already on the screen, that way the player can't spam button
+                        {
+                            //joueur.Shoot();
+                            shooted.Add(new Ammo(joueur.x, joueur.y));
+                        }
                         break;
 
-                    case ConsoleKey.Escape:                         //Si l'utilisateur a appuyé sur exit
-                        Environment.Exit(0);                         //Quitter le programme
+                    case ConsoleKey.Escape:                         //If the user press the touch escape
+                        Environment.Exit(0);                        //Exit the program
                         break;
                 }
             }
 
-            ++nbrframe;
-            Thread.Sleep(10);       //15 is equivalent to 60fps (TODO: check that)
+            ++nbrframe;             //Incrementing the nuber of frame
+            Thread.Sleep(10);       //Making the program wait so that the user have the time to see what happened
         }
     }
 }
