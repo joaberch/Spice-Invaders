@@ -73,7 +73,7 @@ class Program
                 {
                     for(int i = 0; i<enemyalive.Count();++i)
                     {
-                        enemyalive[i].moveDown();   //TODO : problème icescrum (Making all the enemy go down : time spent : 65)
+                        enemyalive[i].moveDown();
                     }
                 }
             }
@@ -95,10 +95,22 @@ class Program
                     if ((alien._y == ammo.y || alien._y - 1 == ammo.y || alien._y + 1 == ammo.y) && (alien._x - 2 == ammo.x || alien._x - 3 == ammo.x || alien._x - 4 == ammo.x))
                     {
                         alien.takeDamage();
+                        ammo.hastouched = true;
                         //shooted.Remove(ammo);
                     }
                 }
             }
+
+            //Kill ammo if it has touched an enemy
+            for(int i = 0; i < shooted.Count(); ++i)
+            {
+                if (shooted[i].hastouched == true)
+                {
+                    shooted.Remove(shooted[i]);
+                }
+            }
+
+            //Check
 
             //if the player has pressed a button
             if (Console.KeyAvailable)                               //L'utilisateur a pressé une touche

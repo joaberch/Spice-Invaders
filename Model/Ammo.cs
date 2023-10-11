@@ -14,6 +14,7 @@ namespace Model
         //public List<Ammo> ammoshooted = new List<Ammo>();
         public int x;
         public int y;
+        public bool hastouched = false;
         //public int compteur = 0;
         public Ammo(int x, int y)    //Constructeur
         {
