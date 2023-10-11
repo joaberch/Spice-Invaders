@@ -102,7 +102,7 @@ class Program
                     {
                         alien.takeDamage();
                         ammo.hastouched = true;
-                        score.AddScore();
+                        score.AddScore();           //TODO : if the enemy die and not if he is touched
                     }
                 }
             }
