@@ -48,7 +48,7 @@ namespace Display
         }
         public void DisplayScore(int score)
         {
-            Console.SetCursorPosition(Config.WINDOW_WIDTH-10, 0);
+            Console.SetCursorPosition(Config.WINDOW_WIDTH-15, 0);
             Console.WriteLine($"Score : {score}");
         }
     }
