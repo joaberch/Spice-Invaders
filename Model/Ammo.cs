@@ -11,7 +11,7 @@ namespace Model
     {
         Playground playground = new Playground();
         //Collection of bullet
-        //public List<Ammo> ammoshooted = new List<Ammo>();
+        //public List<Ammo> ammoshooted = new List<Ammo>(); 
         public int x;
         public int y;
         public bool hastouched = false;

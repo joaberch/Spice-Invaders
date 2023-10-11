@@ -14,7 +14,7 @@ class Program
 
         //assigning the variable (TODO : rename all comments in english and comments)
 
-        Console.CursorVisible = false;                  //Not displaying the cursor 
+        Console.CursorVisible = false;                  //Not displaying the cursor
         ConsoleKeyInfo keyPressed;                      //Will get the user input
         const int NBRENEMY = 10;                        //Choosing the number of enemy per wave
         int nbrframe = 0;                               //Calculate the number of farme
