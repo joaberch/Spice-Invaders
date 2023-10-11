@@ -10,8 +10,9 @@ class Program
         config.configurateScreen();
         Player joueur = new Player(3);
         Enemy mechant = new Enemy(0, 0);
+        Score score = new Score();
 
-        //Assignation des variables (TODO : rename all comments in english)
+        //Assignation des variables (TODO : rename all comments in english and comments)
 
         Console.CursorVisible = false;  //Not displaying the cursor
         ConsoleKeyInfo keyPressed;      //Will get the user input
@@ -35,6 +36,9 @@ class Program
         {
             Console.Clear();    //Clear Screen
             joueur.show();      //Display Player
+
+            //Displaying the score
+            score.DisplayScore();
 
             //if all enemy are dead we create more enemy
             if (enemyalive.Count <= 0)
@@ -96,7 +100,7 @@ class Program
                     {
                         alien.takeDamage();
                         ammo.hastouched = true;
-                        //shooted.Remove(ammo);
+                        score.AddScore();
                     }
                 }
             }
@@ -110,16 +114,14 @@ class Program
                 }
             }
 
-            //Check
-
-            //if the player has pressed a button
+            //Check if the player has pressed a button
             if (Console.KeyAvailable)                               //L'utilisateur a pressé une touche
             {
 
                 keyPressed = Console.ReadKey(false);
                 switch (keyPressed.Key)
                 {
-                    case ConsoleKey.LeftArrow:                      //Si l'utilisateur a appuyé sur flèche de gauche
+                    case ConsoleKey.LeftArrow:                      //Si l'utilisateur a appuyé sur la flèche de gauche
                         joueur.MovingLeft();
                         break;
 

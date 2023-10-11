@@ -46,5 +46,10 @@ namespace Display
                 Console.Write(PlayerSprite1[i]);
             }
         }
+        public void DisplayScore(int score)
+        {
+            Console.SetCursorPosition(Config.WINDOW_WIDTH-10, 0);
+            Console.WriteLine($"Score : {score}");
+        }
     }
 }
