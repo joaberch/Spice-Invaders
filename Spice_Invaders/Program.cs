@@ -12,12 +12,13 @@ class Program
         Enemy mechant = new Enemy(0, 0);
         Score score = new Score();
 
-        //assigning the variable (TODO : rename all comments in english and comments)
+        //assigning the variable (TODO : rename all comments in english and comments) 
 
         Console.CursorVisible = false;                  //Not displaying the cursor
         ConsoleKeyInfo keyPressed;                      //Will get the user input
         const int NBRENEMY = 10;                        //Choosing the number of enemy per wave
-        int nbrframe = 0;                               //Calculate the number of farme
+        int nbrframe = 0;                               //Calculate the number of frame
+        int wave = 1;                                   //Calculate the number of wave
 
         mechant.creatingenemy(NBRENEMY);                //Instantiating the number of enemy choosen
         mechant.nbrenemy = NBRENEMY;                    //Getting the number of enemy in the enemy class
@@ -45,8 +46,9 @@ class Program
             {
                 for (int i = 1; i < 10; ++i)
                 {
-                    enemyalive.Add(new Enemy(i * 4, 1));
+                    enemyalive.Add(new Enemy(i * 4, wave));
                 }
+                ++wave;
             }
 
             //Display and move ammo

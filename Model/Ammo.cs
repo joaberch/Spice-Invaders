@@ -10,27 +10,39 @@ namespace Model
     public class Ammo
     {
         Playground playground = new Playground();
-        //Collection of bullet
+
+        //TODO : dette technique bool
         //public List<Ammo> ammoshooted = new List<Ammo>(); 
-        public int x;
-        public int y;
-        public bool hastouched = false;
+        public int x;                       //coordinate x of the ammo
+        public int y;                       //coordinate y of the ammo
+        public bool hastouched = false;     //check if the ammo has touched an enemy so that it can be removed
         //public int compteur = 0;
-        public Ammo(int x, int y)    //Constructeur
+
+        /// <summary>
+        /// Constructor of the ammo, we get the x and y coordinate
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public Ammo(int x, int y)
         {
             this.x = x;
             this.y = y;
         }
 
+        /// <summary>
+        /// Display the ammo at the x and y coordinate
+        /// </summary>
         public void show()
         {
-            y--;
             playground.DisplayAmmunition(x, y);
         }
 
+        /// <summary>
+        /// making the ammo move by going up
+        /// </summary>
         public void move()
         {
-            //++compteur;
+            y--;
         }
     }
 }

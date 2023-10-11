@@ -35,7 +35,7 @@ namespace Model
         /// <param name="p"></param>
         public void creatingenemy(int p)
         {
-            for (int i = 0; i <= p; ++i)
+            for (int i = 0; i <= p; ++i)                //for the required number (p) we create an enemy in the collection alive
             {
                 alive.Add(new Enemy(i, 1));
             }
@@ -55,7 +55,7 @@ namespace Model
         /// </summary>
         public void move()
         {
-            if (IsGoingToTheRight)
+            if (IsGoingToTheRight)                      //If the enemy should go to the right it go to the right else it go to the left
             {
                 _x++;
             }
@@ -70,12 +70,13 @@ namespace Model
         /// </summary>
         public void moveDown()
         {
-            this._y += 1; //Do it twice so go down twice
-            if(IsGoingToTheRight)
+            this._y += 1;   //Do it twice so go down twice, it make the enemy go down by 1 pixel 2 times (so make the enemy go down by 2 pixel)
+
+            if(IsGoingToTheRight)                       //If it was going to the right it start going to the left
             {
                 IsGoingToTheRight=false;
             }
-            else
+            else                                        //If it was going to the left it start going to the right
             {
                 IsGoingToTheRight = true;
             }
@@ -86,7 +87,7 @@ namespace Model
         /// </summary>
         public void takeDamage()
         {
-            this._lifePoint--;
+            this._lifePoint--;                          //Make the enemy lose life point
         }
     }
 }

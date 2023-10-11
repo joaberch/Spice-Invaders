@@ -36,7 +36,7 @@ namespace Model
         /// </summary>
         public void MovingLeft()
         {
-            if (x >= 1)
+            if (x >= 1)                     //If it hasn't reached the left border it goes to the left
             {
                 --x;
             }
@@ -45,9 +45,9 @@ namespace Model
         /// <summary>
         /// Making the ship moving to the right
         /// </summary>
-        public void MovingRight()
+        public void MovingRight()           //If it hasn't reached the right border it goes to the right
         {
-            if (x <= Console.WindowWidth - 4 - playground.PlayerSprite1.Length)
+            if (x <= Config.WINDOW_WIDTH - 4 - playground.PlayerSprite1.Length)
             {
                 ++x;
             }
