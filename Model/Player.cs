@@ -10,15 +10,15 @@ namespace Model
     public class Player
     {
         Playground playground = new Playground();               //Instantiating the playground so that i can display the player
-        public int x = 0;                                       //Variable taking the x position of the ship
-        public int y = Config.WINDOW_HEIGHT - HAUTEURVAISSEAU;  //Variable taking the y position of the ship
-        const int HAUTEURVAISSEAU = 4;                          //constant taking the height of the sprite of the ship
+        public int x_position = 0;                                       //Variable taking the x position of the ship
+        public int y_position = Config.WINDOW_HEIGHT - HAUTEURVAISSEAU;  //Variable taking the y position of the ship
+        const int HAUTEURVAISSEAU = 4;                          //Constant taking the height of the sprite of the ship
 
         /// <summary>
         /// Constructor of the ship
         /// </summary>
-        /// <param name="vieVaisseau"></param>
-        public Player(int vieVaisseau)
+        /// <param name="lifePointOfTheShip"></param>
+        public Player(int lifePointOfTheShip)
         {
 
         }
@@ -28,7 +28,7 @@ namespace Model
         /// </summary>
         public void show()
         {
-            playground.DisplayShip(x, y);
+            playground.DisplayShip(x_position, y_position);
         }
 
         /// <summary>
@@ -36,9 +36,9 @@ namespace Model
         /// </summary>
         public void MovingLeft()
         {
-            if (x >= 1)                     //If it hasn't reached the left border it goes to the left
+            if (x_position >= 1)                     //If it hasn't reached the left border it goes to the left
             {
-                --x;
+                --x_position;
             }
         }
 
@@ -47,9 +47,9 @@ namespace Model
         /// </summary>
         public void MovingRight()           //If it hasn't reached the right border it goes to the right
         {
-            if (x <= Config.WINDOW_WIDTH - 4 - playground.PlayerSprite1.Length)
+            if (x_position <= Config.WINDOW_WIDTH - 4 - playground.PlayerSprite1.Length)
             {
-                ++x;
+                ++x_position;
             }
         }
 

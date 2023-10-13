@@ -9,15 +9,15 @@ namespace Model
 {
     public class Score
     {
-        public int score = 0;                       //variable taking the score
+        public int score = 0;                       //Variable taking the score
         Playground playground = new Playground();   //Using the playground to be able to dispay the score
 
         /// <summary>
         /// Adding 10 points in the score
         /// </summary>
-        public void AddScore()
+        public void AddScore(int s)
         {
-            score += 10;
+            score += 10*s;
         }
 
         /// <summary>

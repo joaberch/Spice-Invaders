@@ -1,6 +1,7 @@
 ﻿using Model;
 using Display;
 
+
 class Program
 {
     static void Main()
@@ -14,17 +15,17 @@ class Program
 
         //assigning the variable (TODO : rename all comments in english and comments) 
 
-        Console.CursorVisible = false;                  //Not displaying the cursor
-        ConsoleKeyInfo keyPressed;                      //Will get the user input
-        const int NBRENEMY = 10;                        //Choosing the number of enemy per wave
-        int nbrframe = 0;                               //Calculate the number of frame
-        int wave = 1;                                   //Calculate the number of wave
+        Console.CursorVisible = false;                      //Not displaying the cursor
+        ConsoleKeyInfo keyPressed;                          //Will get the user input
+        const int NBRENEMY = 10;                            //Choosing the number of enemy per wave
+        int nbrframe = 0;                                   //Calculate the number of frame
+        int NBRWAVE = 1;                                    //Calculate the number of wave
 
-        mechant.creatingenemy(NBRENEMY);                //Instantiating the number of enemy choosen
-        mechant.nbrenemy = NBRENEMY;                    //Getting the number of enemy in the enemy class
+        mechant.creatingenemy(NBRENEMY);                    //Instantiating the number of enemy choosen
+        mechant.numberofenemy = NBRENEMY;                   //Getting the number of enemy in the enemy class
 
-        List<Ammo> shooted = new List<Ammo>();          //Collection of bullet shooted
-        List<Enemy> enemyalive = new List<Enemy>();     //Collection of enemy alive
+        List<Ammo> shooted = new List<Ammo>();              //Collection of bullet shooted
+        List<Enemy> enemyalive = new List<Enemy>();         //Collection of enemy alive
 
         //Instantiating enemy
         for (int i = 0; i <= NBRENEMY; ++i)
@@ -41,14 +42,14 @@ class Program
             //Displaying the score
             score.DisplayScore();
 
-            //If all enemy are dead we create more enemy
+            //If all enemies are dead we create more enemy
             if (enemyalive.Count <= 0)
             {
+                ++NBRWAVE;
                 for (int i = 1; i < 10; ++i)
                 {
-                    enemyalive.Add(new Enemy(i * 4, wave));
+                    enemyalive.Add(new Enemy(i * 4, NBRWAVE));
                 }
-                ++wave;
             }
 
             //Display and move ammo
@@ -61,7 +62,7 @@ class Program
             //Kill ammo
             for (int i = 0; i < shooted.Count; ++i)
             {
-                if (shooted[i].y <= 1)
+                if (shooted[i].y_position <= 1)
                 {
                     shooted.Remove(shooted[i]);
                 }
@@ -75,7 +76,7 @@ class Program
                 {
                     alien.move();
                 }
-                if (alien._x >= Console.WindowWidth - 5 || alien._x <= 0)
+                if (alien._x_position >= Console.WindowWidth - 5 || alien._x_position <= 0)
                 {
                     for(int i = 0; i<enemyalive.Count();++i)
                     {
@@ -87,8 +88,9 @@ class Program
             //Kill dead enemy
             for (int i = 0; i < enemyalive.Count; ++i)
             {
-                if (enemyalive[i]._lifePoint <= 0)
+                if (enemyalive[i]._Enemy_lifePoint <= 0)
                 {
+                    score.AddScore(NBRWAVE);
                     enemyalive.Remove(enemyalive[i]);
                 }
             }
@@ -98,11 +100,10 @@ class Program
             {
                 foreach (Enemy alien in enemyalive)
                 {
-                    if ((alien._y == ammo.y || alien._y - 1 == ammo.y || alien._y + 1 == ammo.y) && (alien._x - 2 == ammo.x || alien._x - 3 == ammo.x || alien._x - 4 == ammo.x))
+                    if ((alien._y_position == ammo.y_position || alien._y_position - 1 == ammo.y_position || alien._y_position + 1 == ammo.y_position) && (alien._x_position - 2 == ammo.x_position || alien._x_position - 3 == ammo.x_position || alien._x_position - 4 == ammo.x_position))
                     {
                         alien.takeDamage();
                         ammo.hastouched = true;
-                        score.AddScore();           //TODO : if the enemy die and not if he is touched
                     }
                 }
             }
@@ -110,7 +111,7 @@ class Program
             //Kill ammo if it has touched an enemy
             for(int i = 0; i < shooted.Count(); ++i)
             {
-                if (shooted[i].hastouched == true)
+                if (shooted[i].hastouched)
                 {
                     shooted.Remove(shooted[i]);
                 }
@@ -135,7 +136,7 @@ class Program
                         if(shooted.Count() < 5)                     //Can't shoot if there's more than 5 ammo already on the screen, that way the player can't spam button
                         {
                             //joueur.Shoot();
-                            shooted.Add(new Ammo(joueur.x, joueur.y));
+                            shooted.Add(new Ammo(joueur.x_position, joueur.y_position));
                         }
                         break;
 

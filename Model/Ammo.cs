@@ -11,11 +11,10 @@ namespace Model
     {
         Playground playground = new Playground();
 
-        //TODO : dette technique bool
         //public List<Ammo> ammoshooted = new List<Ammo>(); 
-        public int x;                       //coordinate x of the ammo
-        public int y;                       //coordinate y of the ammo
-        public bool hastouched = false;     //check if the ammo has touched an enemy so that it can be removed
+        public int x_position;                       //Coordinate x of the ammo
+        public int y_position;                       //Coordinate y of the ammo
+        public bool hastouched;                      //Check if the ammo has touched an enemy so that it can be removed
         //public int compteur = 0;
 
         /// <summary>
@@ -25,8 +24,8 @@ namespace Model
         /// <param name="y"></param>
         public Ammo(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.x_position = x;
+            this.y_position = y;
         }
 
         /// <summary>
@@ -34,15 +33,15 @@ namespace Model
         /// </summary>
         public void show()
         {
-            playground.DisplayAmmunition(x, y);
+            playground.DisplayAmmunition(x_position, y_position);
         }
 
         /// <summary>
-        /// making the ammo move by going up
+        /// Making the ammo move by going up
         /// </summary>
         public void move()
         {
-            y--;
+            y_position--;
         }
     }
 }
