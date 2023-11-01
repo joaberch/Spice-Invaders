@@ -23,10 +23,21 @@ namespace Display
         public string[] PlayerSprite1 =
 {
             @"   __",
-            @"  /__\",
-            @" /(__)\",
+            @"  /--\",
+            @" /(--)\",
             @"(__)(__)",
      };
+
+        //Sprite of the game over
+        public string[] GameOverSprite =
+        {
+@"   _____                         ____",
+@"  / ____|                       / __ \   ",             
+@" | |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __",
+@" | | |_ |/ _` | '_ ` _ \ / _ \ | |  | \ \ / / _ \ '__|",
+@" | |__| | (_| | | | | | |  __/ | |__| |\ V /  __/ |",
+@"  \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|",
+        };
 
         /// <summary>
         /// Display the ammo at the position selected
@@ -37,6 +48,20 @@ namespace Display
         {
             Console.SetCursorPosition(x+4, y);
             Console.WriteLine(AMMOSPRITE);
+        }
+
+        public void GameOver()
+        {
+            Console.Clear();
+
+            for (int i = 0; i < 6; ++i)
+            {
+                Console.SetCursorPosition(10, i);
+                Console.WriteLine(GameOverSprite[i]);
+            }
+
+            Console.SetCursorPosition(0, 10);
+            Console.WriteLine("Username (2 to 4 characters): ");
         }
 
         /// <summary>

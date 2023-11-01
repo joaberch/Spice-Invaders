@@ -15,9 +15,9 @@ namespace Model
         /// <summary>
         /// Adding 10 points in the score
         /// </summary>
-        public void AddScore(int s)
+        public void AddScore(int wave_number)
         {
-            score += 10*s;
+            score += 10*wave_number;
         }
 
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿using Model;
 using Display;
-
+using Storage;
 
 class Program
 {
@@ -9,9 +9,12 @@ class Program
         //Instantiating the object
         Config config = new Config();
         config.configurateScreen();
-        Player joueur = new Player(3);
+        Player joueur = new Player();
         Enemy mechant = new Enemy(0, 0);
         Score score = new Score();
+        Playground playground = new Playground();
+        DBConnection ConnexionDB = new DBConnection();
+        
 
         //assigning the variable (TODO : rename all comments in english and comments) 
 
@@ -20,8 +23,10 @@ class Program
         const int NBRENEMY = 10;                            //Choosing the number of enemy per wave
         int nbrframe = 0;                                   //Calculate the number of frame
         int NBRWAVE = 1;                                    //Calculate the number of wave
+        bool IsGameOver = false;                            //Is the game over?
+        string username;                                    //Take the name of the player
 
-        mechant.creatingenemy(NBRENEMY);                    //Instantiating the number of enemy choosen
+        mechant.creatingenemy(NBRENEMY);                  //Instantiating the number of enemy choosen
         mechant.numberofenemy = NBRENEMY;                   //Getting the number of enemy in the enemy class
 
         List<Ammo> shooted = new List<Ammo>();              //Collection of bullet shooted
@@ -78,7 +83,7 @@ class Program
                 }
                 if (alien._x_position >= Console.WindowWidth - 5 || alien._x_position <= 0)
                 {
-                    for(int i = 0; i<enemyalive.Count();++i)
+                    for (int i = 0; i < enemyalive.Count(); ++i)
                     {
                         enemyalive[i].moveDown();
                     }
@@ -109,11 +114,45 @@ class Program
             }
 
             //Kill ammo if it has touched an enemy
-            for(int i = 0; i < shooted.Count(); ++i)
+            for (int i = 0; i < shooted.Count(); ++i)
             {
                 if (shooted[i].hastouched)
                 {
                     shooted.Remove(shooted[i]);
+                }
+            }
+
+            //Check if the player is dead
+            foreach(Enemy alien in enemyalive)
+            {
+                if(alien._y_position == joueur.y_position)
+                {
+                    IsGameOver = true;
+                }
+            }
+
+            //if the player is dead
+            {
+                if(IsGameOver)
+                {
+                    do
+                    {
+                        playground.GameOver();
+                    
+                        Console.SetCursorPosition(30, 10);
+                        username = Console.ReadLine();
+                    }
+                    while (username.Length > 4 || username.Length < 2);
+
+                    ConnexionDB.connection();
+
+                    ConnexionDB.username = username;
+                    ConnexionDB.score = score.score;
+
+                    ConnexionDB.Add();
+
+                    Console.Read();
+
                 }
             }
 
@@ -133,7 +172,7 @@ class Program
                         break;
 
                     case ConsoleKey.Spacebar:                       //If the user press the space bar
-                        if(shooted.Count() < 5)                     //Can't shoot if there's more than 5 ammo already on the screen, that way the player can't spam button
+                        if (shooted.Count() < 5)                     //Can't shoot if there's more than 5 ammo already on the screen, that way the player can't spam button
                         {
                             //joueur.Shoot();
                             shooted.Add(new Ammo(joueur.x_position, joueur.y_position));

@@ -15,15 +15,6 @@ namespace Model
         const int HAUTEURVAISSEAU = 4;                          //Constant taking the height of the sprite of the ship
 
         /// <summary>
-        /// Constructor of the ship
-        /// </summary>
-        /// <param name="lifePointOfTheShip"></param>
-        public Player(int lifePointOfTheShip)
-        {
-
-        }
-
-        /// <summary>
         /// Displaying the ship of the player
         /// </summary>
         public void show()
@@ -49,13 +40,8 @@ namespace Model
         {
             if (x_position <= Config.WINDOW_WIDTH - 4 - playground.PlayerSprite1.Length)
             {
-                ++x_position;
+                this.x_position++;
             }
         }
-
-        /*public void Shoot()
-        {
-            Ammo ammo = new Ammo(x, y);
-        }*/
     }
 }

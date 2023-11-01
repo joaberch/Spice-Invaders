@@ -33,7 +33,7 @@ namespace Model
         /// Creating enemy
         /// </summary>
         /// <param name="numberOfEnemy"></param>
-        public void creatingenemy(int numberOfEnemy)
+        public void creatingenemy(int numberOfEnemy)    //TODO : technical debt - 2 collection of ennemies /!\
         {
             for (int i = 0; i <= numberOfEnemy; ++i)                //for the required number (p) we create an enemy in the collection alive
             {
