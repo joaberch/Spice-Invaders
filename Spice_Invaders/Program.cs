@@ -206,6 +206,9 @@ class Program
 
                 //Reset the number of wave
                 NBRWAVE = 0;
+
+                //Reset the frame rate
+                nbrframe = 0;
             }
 
             ++nbrframe;             //Incrementing the nuber of frame
