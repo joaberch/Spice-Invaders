@@ -51,6 +51,14 @@ namespace Storage
         }
 
         /// <summary>
+        /// Close the connection to the database so we can open it again if a new game is played
+        /// </summary>
+        public void stopConnection()
+        {
+            Connection?.Close();
+        }
+
+        /// <summary>
         /// Insert in the database a score and a username
         /// </summary>
         public void Add()

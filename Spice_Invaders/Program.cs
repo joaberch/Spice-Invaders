@@ -182,6 +182,8 @@ class Program
                 ConnexionDB.Add();  //Add the score in the database
                 ConnexionDB.Top5(); //Read the 5 five best player score
 
+                ConnexionDB.stopConnection();   //Stop the connection to the database
+
                 playground.restart();
 
                 do
