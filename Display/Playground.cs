@@ -39,6 +39,9 @@ namespace Display
 @"  \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|",
         };
 
+        //Restart the game
+        public string restarttxt = "Appuyer sur espace pour relancer une partie.";
+
         /// <summary>
         /// Display the ammo at the position selected
         /// </summary>
@@ -76,6 +79,11 @@ namespace Display
                 Console.SetCursorPosition(x, y+i);
                 Console.Write(ennemySprite1[i]);
             }
+        }
+
+        public void restart()
+        {
+            Console.WriteLine(restarttxt);
         }
 
         /// <summary>
