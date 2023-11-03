@@ -9,10 +9,10 @@ namespace Model
 {
     public class Player
     {
-        Playground playground = new Playground();               //Instantiating the playground so that i can display the player
-        public int x_position = 0;                                       //Variable taking the x position of the ship
-        public int y_position = Config.WINDOW_HEIGHT - HAUTEURVAISSEAU;  //Variable taking the y position of the ship
-        const int HAUTEURVAISSEAU = 4;                          //Constant taking the height of the sprite of the ship
+        Playground playground = new Playground();                           //Instantiating the playground so that i can display the player
+        public int x_position = 0;                                          //Variable taking the x position of the ship
+        public int y_position = Config.WINDOW_HEIGHT - HAUTEURVAISSEAU;     //Variable taking the y position of the ship
+        const int HAUTEURVAISSEAU = 4;                                      //Constant taking the height of the sprite of the ship
 
         /// <summary>
         /// Displaying the ship of the player
@@ -27,7 +27,7 @@ namespace Model
         /// </summary>
         public void MovingLeft()
         {
-            if (x_position >= 1)                     //If it hasn't reached the left border it goes to the left
+            if (x_position >= 1)                                            //If it hasn't reached the left border it goes to the left
             {
                 --x_position;
             }
@@ -36,7 +36,7 @@ namespace Model
         /// <summary>
         /// Making the ship moving to the right
         /// </summary>
-        public void MovingRight()           //If it hasn't reached the right border it goes to the right
+        public void MovingRight()                                           //If it hasn't reached the right border it goes to the right
         {
             if (x_position <= Config.WINDOW_WIDTH - 4 - playground.PlayerSprite1.Length)
             {
