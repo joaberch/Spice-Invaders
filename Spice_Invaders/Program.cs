@@ -14,7 +14,7 @@ class Program
         Score score = new Score();
         Playground playground = new Playground();
         DBConnection ConnexionDB = new DBConnection();
-        
+
 
         //assigning the variable (TODO : rename all comments in english and comments) 
 
@@ -25,6 +25,7 @@ class Program
         int NBRWAVE = 1;                                    //Calculate the number of wave
         bool IsGameOver = false;                            //Is the game over?
         string username;                                    //Take the name of the player
+        bool restart = false;                               
 
         mechant.creatingenemy(NBRENEMY);                  //Instantiating the number of enemy choosen
         mechant.numberofenemy = NBRENEMY;                   //Getting the number of enemy in the enemy class
@@ -123,38 +124,15 @@ class Program
             }
 
             //Check if the player is dead
-            foreach(Enemy alien in enemyalive)
+            foreach (Enemy alien in enemyalive)
             {
-                if(alien._y_position == joueur.y_position)
+                if (alien._y_position == joueur.y_position)
                 {
                     IsGameOver = true;
                 }
             }
 
-            //if the player is dead
-            {
-                if(IsGameOver)
-                {
-                    do
-                    {
-                        playground.GameOver();
-                    
-                        Console.SetCursorPosition(30, 10);
-                        username = Console.ReadLine();
-                    }
-                    while (username.Length > 4 || username.Length < 2);
 
-                    ConnexionDB.connection();
-
-                    ConnexionDB.username = username;
-                    ConnexionDB.score = score.score;
-
-                    ConnexionDB.Add();
-
-                    Console.Read();
-
-                }
-            }
 
             //Check if the player has pressed any button
             if (Console.KeyAvailable)                               //If the user press any touch
@@ -183,6 +161,54 @@ class Program
                         Environment.Exit(0);                        //Exit the program
                         break;
                 }
+            }
+
+            //if the player is dead
+
+            if (IsGameOver)
+            {
+                do
+                {
+                    playground.GameOver();
+
+                    Console.SetCursorPosition(30, 10);
+                    username = Console.ReadLine();
+                }
+                while (username.Length > 4 || username.Length < 2);
+
+                ConnexionDB.connection();
+
+                ConnexionDB.username = username;
+                ConnexionDB.score = score.score;
+
+                ConnexionDB.Add();  //Add the score in the database
+                ConnexionDB.Top5(); //Read the 5 five best player score
+
+                playground.restart();
+
+                do
+                {
+                    if (Console.KeyAvailable) { keyPressed = Console.ReadKey(false); if (keyPressed.Key == ConsoleKey.Spacebar) { restart = true; } }   //If the player press the space bar
+                }
+                while (!restart);
+                IsGameOver = false;
+
+                //reset all the values
+
+                //Kill all the enemies still alive
+                for (int i = 0; i != enemyalive.Count; )
+                {
+                    enemyalive.RemoveAt(0);
+                }
+
+                //Reset the score
+                score.score = 0;
+
+                //Reset the number of wave
+                NBRWAVE = 0;
+
+                //reset the number of frame
+                nbrframe = 0;
             }
 
             ++nbrframe;             //Incrementing the nuber of frame

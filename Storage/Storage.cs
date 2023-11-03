@@ -8,7 +8,8 @@ namespace Storage
 {
     public class DBConnection
     {
-        string str = "Server=localhost;database=SpicyInvaders;UID=root;password=root;port=6033;";
+        string connect = "Server=localhost;database=SpicyInvaders;UID=root;password=root;port=6033;";
+        string select = "SELECT username, score FROM t_score ORDER BY score DESC LIMIT 5;";
         public string username;
         public int score;
 
@@ -26,7 +27,7 @@ namespace Storage
 
         public void connection()
         {
-            Connection = new MySqlConnection(str);          //Lancer une connection
+            Connection = new MySqlConnection(connect);          //Lancer une connection
 
             try                                             //Essayer de s'y connecter
             {
@@ -36,18 +37,32 @@ namespace Storage
             }
             catch (MySqlException ex)
             {
-                Debug.WriteLine("erreur de connexion à la base de donnée");                //Message erreur à la sortie si impossible de se connecter à la db
+                Debug.WriteLine("Erreur avec la base de donnée");                //Message erreur à la sortie si impossible de se connecter à la db
             }
 
         }
 
         public void Add()
         {
-            string parameters = "INSERT INTO t_score(score, username) VALUES (" + score + ", '" + username + "');";
-            MySqlCommand cmd = new MySqlCommand(parameters, Connection);
-            MySqlDataReader reader = cmd.ExecuteReader();
+            string parameters = "INSERT INTO t_score(score, username) VALUES (" + score + ", '" + username + "');"; //string contenant la commande
+            MySqlCommand cmd = new MySqlCommand(parameters, Connection);                                            //Effectuer la commande du string dans la connection de la DB
+            MySqlDataReader reader = cmd.ExecuteReader();                                                           //Lire la commande
             reader.Read();
-            Connection.Close();
+            reader.Close();
+        }
+
+        public void Top5()
+        {
+            MySqlCommand cmd;
+            MySqlDataReader dataReader;
+            cmd = new MySqlCommand(select, Connection);
+            
+            dataReader = cmd.ExecuteReader();
+            while(dataReader.Read())
+            {
+                Console.WriteLine(dataReader.GetValue(0) + " || " + dataReader.GetValue(1));
+            }
+            dataReader.Close();
         }
     }
 }
