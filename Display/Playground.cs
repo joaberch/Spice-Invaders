@@ -53,6 +53,9 @@ namespace Display
             Console.WriteLine(AMMOSPRITE);
         }
 
+        /// <summary>
+        /// Display the Game Over menu
+        /// </summary>
         public void GameOver()
         {
             Console.Clear();
@@ -81,6 +84,14 @@ namespace Display
             }
         }
 
+        public void restart()
+        {
+            Console.WriteLine(restarttxt);
+        }
+
+        /// <summary>
+        /// Display the information to restart a game
+        /// </summary>
         public void restart()
         {
             Console.WriteLine(restarttxt);

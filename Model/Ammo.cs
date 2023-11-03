@@ -11,11 +11,9 @@ namespace Model
     {
         Playground playground = new Playground();
 
-        //public List<Ammo> ammoshooted = new List<Ammo>(); 
         public int x_position;                       //Coordinate x of the ammo
         public int y_position;                       //Coordinate y of the ammo
         public bool hastouched;                      //Check if the ammo has touched an enemy so that it can be removed
-        //public int compteur = 0;
 
         /// <summary>
         /// Constructor of the ammo, we get the x and y coordinate
