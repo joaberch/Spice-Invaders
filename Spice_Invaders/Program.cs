@@ -27,7 +27,6 @@ class Program
         string username;                                    //Take the name of the player
         bool restart = false;                               
 
-        mechant.creatingenemy(NBRENEMY);                  //Instantiating the number of enemy choosen
         mechant.numberofenemy = NBRENEMY;                   //Getting the number of enemy in the enemy class
 
         List<Ammo> shooted = new List<Ammo>();              //Collection of bullet shooted
@@ -181,8 +180,9 @@ class Program
                 ConnexionDB.username = username;
                 ConnexionDB.score = score.score;
 
-                ConnexionDB.Add();  //Add the score in the database
-                ConnexionDB.Top5(); //Read the 5 five best player score
+                ConnexionDB.Add();              //Add the score in the database
+                ConnexionDB.Top5();             //Read the 5 five best player score
+                ConnexionDB.connectionClose();  //Close the connection to the database
 
                 playground.restart();
 

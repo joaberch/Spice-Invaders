@@ -25,32 +25,49 @@ namespace Storage
             return _instance;
         }
 
+        /// <summary>
+        /// Start a connection
+        /// </summary>
         public void connection()
         {
-            Connection = new MySqlConnection(connect);          //Lancer une connection
+            Connection = new MySqlConnection(connect);          //Start a connection
 
-            try                                             //Essayer de s'y connecter
+            try                                             //Try connecting
             {
                 Connection.Open();
 
-                Debug.WriteLine("Connexion à la base de donnée réussi");    //Affiche à la sortie, confirme la connexion
+                Debug.WriteLine("Connexion à la base de donnée réussi");    //Display the connection state
             }
             catch (MySqlException ex)
             {
-                Debug.WriteLine("Erreur avec la base de donnée");                //Message erreur à la sortie si impossible de se connecter à la db
+                Debug.WriteLine("Erreur avec la base de donnée");                //Display an error message
             }
 
         }
 
+        /// <summary>
+        /// Closing the connection to the database
+        /// </summary>
+        public void connectionClose()
+        {
+            Connection?.Close();
+        }
+
+        /// <summary>
+        /// Add data in the database
+        /// </summary>
         public void Add()
         {
-            string parameters = "INSERT INTO t_score(score, username) VALUES (" + score + ", '" + username + "');"; //string contenant la commande
-            MySqlCommand cmd = new MySqlCommand(parameters, Connection);                                            //Effectuer la commande du string dans la connection de la DB
-            MySqlDataReader reader = cmd.ExecuteReader();                                                           //Lire la commande
+            string parameters = "INSERT INTO t_score(score, username) VALUES (" + score + ", '" + username + "');"; //string containing the command
+            MySqlCommand cmd = new MySqlCommand(parameters, Connection);                                            //Doing the command in the database
+            MySqlDataReader reader = cmd.ExecuteReader();                                                           //Reading the command
             reader.Read();
             reader.Close();
         }
 
+        /// <summary>
+        /// Displaying the 5 best player
+        /// </summary>
         public void Top5()
         {
             MySqlCommand cmd;

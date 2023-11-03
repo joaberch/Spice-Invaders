@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace Display
 {
 
@@ -82,11 +83,6 @@ namespace Display
                 Console.SetCursorPosition(x, y+i);
                 Console.Write(ennemySprite1[i]);
             }
-        }
-
-        public void restart()
-        {
-            Console.WriteLine(restarttxt);
         }
 
         /// <summary>
