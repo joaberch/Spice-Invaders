@@ -20,7 +20,7 @@ namespace Model
 		public Enemy(int _position, int Enemy_LifePoint)
 		{
 			_x_position = _position;              // The x position of the enemy is the one chosen when the enemy is instantiated
-			_y_position = 3;                      // The y position of the enemy is 3 by default
+			_y_position = 10;                      // The y position of the enemy is 3 by default
 			_Enemy_lifePoint = Enemy_LifePoint;   // The number of life points of the enemy is the one chosen when the enemy is instantiated
 		}
 
